@@ -4,8 +4,8 @@ Version:	0.1.6a
 Release:	1
 License:	GPL v2+
 Group:		Applications/Emulators
-Source0:	http://downloads.sourceforge.net/fdd3000e/%{name}_v%{version}.zip
-# Source0-md5:	4d1eca31e0b3787f8214b9d5302a6d7e
+Source0:	http://downloads.sourceforge.net/fdd3000e/%{name}_v%{version}-1.zip
+# Source0-md5:	19c2feacb6d9b902058e71fbfaee8bac
 Patch0:		z80ex.patch
 URL:		http://fdd3000e.sourceforge.net/
 BuildRequires:	QtCore-devel
