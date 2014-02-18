@@ -1,0 +1,23 @@
+--- fdd3000-1.6/fdd3000/fdd3000.pro.orig	2014-02-17 21:07:59.300950127 +0100
++++ fdd3000-1.6/fdd3000/fdd3000.pro	2014-02-17 21:09:36.169115040 +0100
+@@ -43,17 +43,14 @@ win32:RC_FILE = \
+ OTHER_FILES += \
+     fdd3000e_pl_PL.ts
+ 
+-LIBS += -L$$PWD/z80/ -lz80ex
++LIBS += -lz80ex
+ !unix: LIBS += -static-libgcc -static-libstdc++ -static
+-unix:  LIBS += -static-libgcc -static-libstdc++ -lrt
++unix:  LIBS += -lrt
+ 
+ !unix: QMAKE_LFLAGS         += -static-libgcc -static-libstdc++ --disable-shared
+ !unix: QMAKE_CFLAGS_RELEASE += -static-libgcc -static-libstdc++ --disable-shared
+ 
+-INCLUDEPATH += $$PWD/z80
+-DEPENDPATH += $$PWD/z80
+-
+-PRE_TARGETDEPS += $$PWD/z80/libz80ex.a
++INCLUDEPATH += /usr/include/z80ex
+ 
+ TRANSLATIONS    = fdd3000e_pl_PL.ts
+ 
