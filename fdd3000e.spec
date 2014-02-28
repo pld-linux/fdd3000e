@@ -1,12 +1,14 @@
+%define		subver	2
 Summary:	FDD 3000 emulator
 Name:		fdd3000e
 Version:	0.1.6a
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Applications/Emulators
-Source0:	http://downloads.sourceforge.net/fdd3000e/%{name}_v%{version}-1.zip
-# Source0-md5:	19c2feacb6d9b902058e71fbfaee8bac
+Source0:	http://downloads.sourceforge.net/fdd3000e/%{name}_v%{version}-%{subver}.zip
+# Source0-md5:	bf1d20cb68cc116dd9aa880676877ef8
 Patch0:		z80ex.patch
+Patch1:		tr.patch
 URL:		http://fdd3000e.sourceforge.net/
 BuildRequires:	QtCore-devel
 BuildRequires:	QtGui-devel
@@ -23,6 +25,7 @@ of the emulator (for testing). It requires patched fuse emulator.
 %prep
 %setup -q -c %{name}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 cd fdd3000
@@ -31,9 +34,10 @@ qmake-qt4
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_bindir}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/%{name}}
 
 install fdd3000/fdd3000 $RPM_BUILD_ROOT%{_bindir}
+install fdd3000/*.qm $RPM_BUILD_ROOT%{_datadir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -42,3 +46,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc fdd3000/disk.img README README_pl
 %attr(755,root,root) %{_bindir}/fdd3000
+%{_datadir}/%{name}
