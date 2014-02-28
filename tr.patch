@@ -1,0 +1,22 @@
+--- fdd3000e-0.1.6a/fdd3000/main.cpp.orig	2014-02-28 09:43:55.366729812 +0100
++++ fdd3000e-0.1.6a/fdd3000/main.cpp	2014-02-28 10:05:32.636791756 +0100
+@@ -24,6 +24,10 @@
+ #include <QTextCodec>
+ #include <QTranslator>
+ 
++#if !defined(LOCALEDIR)
++#define LOCALEDIR "/usr/share/fdd3000e"
++#endif
++
+ int main(int argc, char *argv[])
+ {
+     QCoreApplication::setOrganizationName("steev");
+@@ -34,7 +38,7 @@ int main(int argc, char *argv[])
+ 
+     QTranslator qtTranslator;
+ //    qtTranslator.load("fdd3000e_" + QLocale::system().name(), QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+-    qtTranslator.load("fdd3000e_" + QLocale::system().name(),"");
++    qtTranslator.load("fdd3000e_" + QLocale::system().name(), LOCALEDIR);
+     a.installTranslator(&qtTranslator);
+ 
+ //    qDebug()<<QLocale::system().name();
