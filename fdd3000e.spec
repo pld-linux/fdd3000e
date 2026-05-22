@@ -3,7 +3,7 @@ Summary:	FDD 3000 emulator
 Summary(pl.UTF-8):	Emulator FDD 3000
 Name:		fdd3000e
 Version:	0.1.6a
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		Applications/Emulators
 Source0:	http://downloads.sourceforge.net/fdd3000e/%{name}_v%{version}-%{subver}.zip
@@ -36,7 +36,10 @@ testów). Wymaga emulatora fuse z odpowiednią łatką.
 
 %build
 cd fdd3000
-qmake-qt4
+qmake-qt4 \
+	QMAKE_CFLAGS_RELEASE="%{rpmcflags} %{rpmcppflags}" \
+	QMAKE_CXXFLAGS_RELEASE="%{rpmcxxflags} %{rpmcppflags}" \
+	QMAKE_LFLAGS_RELEASE="%{rpmldflags}"
 %{__make}
 
 %install
